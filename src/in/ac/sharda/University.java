@@ -13,7 +13,12 @@ public class University {
 	}
 	public void printDepartment() {
 		departments.parallelStream()
-		.forEach(d -> System.out.println(d.getId()));
+		.forEach(s -> System.out.println(s.getId()));
+		}
+	    
+	
+    public void resultDeclared() {
+	departments.parallelStream().forEach(d -> d.resultArrived());
 	}
 	}
 	

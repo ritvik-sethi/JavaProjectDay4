@@ -2,7 +2,7 @@ package in.ac.sharda;
 
 import java.util.ArrayList;
 import java.util.List;
-    public class Department implements Comparable<Department> {
+    public class Department implements Comparable<Department>,IResultArrivedListner {
 	private final int id;
 	private List<Student> students=new ArrayList<>();
 	
@@ -23,6 +23,7 @@ import java.util.List;
 				s -> System.out.println(
 						s.getname()+s.getRollNumber()));
 	}
+	
 @Override
 public boolean equals(Object obj) {
 	
@@ -35,6 +36,12 @@ public boolean equals(Object obj) {
 @Override
 public int compareTo(Department o) {
 	return o.getId() -id;
+	
+}
+@Override
+public void resultArrived() {
+	students.parallelStream().forEach(s -> s.resultArrived());
+	
 	
 }
 	
